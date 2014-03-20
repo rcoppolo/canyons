@@ -1,0 +1,39 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+@import 'normalize';
+
+body {
+  font-family: "calluna";
+  font-size: 16px
+}
+
+h1 {
+  font-family: "myriad-pro";
+  font-size: 26px;
+}
+
+h2 {
+  font-family: "calluna";
+  font-size: 26px;
+  font-style: italic;
+  font-weight: normal;
+  em {
+    padding: 0 .15em;
+  }
+  span {
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+
+#hello {
+  @include outer-container;
+}
+
+// #middle {
+//   background: #ff7700;
+//   color: white;
+//   @include span-columns(6);
+//   @include shift(3);
+// }
+// 
