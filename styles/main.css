@@ -351,3 +351,6 @@ h2 {
     display: table; }
   #hello:after {
     clear: both; }
+
+.commentForm input {
+  display: block; }
