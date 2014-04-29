@@ -1,16 +1,21 @@
 <!doctype html>
 <html>
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF8">
   <link rel="stylesheet" href="/styles/main.css">
   <script src="/javascripts/react.js"></script>
   <script src="/javascripts/jsx.js"></script>
+  <script src="/javascripts/d3.js"></script>
   <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
   <script type="text/javascript" src="//use.typekit.net/bjo3eby.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
-  <div id="hello"></div>
-  <script type="text/jsx" src="/javascripts/app/main.js"></script>
+  <div id="hello">
+    <div class="chart"></div>
+  </div>
+  <!-- <script type="text/jsx" src="/javascripts/app/main.js"></script> -->
+  <script type="text/jsx" src="/javascripts/app/barchart.js"></script>
 </body>
 </html>
