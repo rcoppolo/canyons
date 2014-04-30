@@ -355,10 +355,12 @@ h2 {
 .commentForm input {
   display: block; }
 
-.chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white; }
+.chart {
+  margin-top: 20px; }
+
+.chart .bar {
+  display: inline-block;
+  width: 20px;
+  height: 75px;
+  background-color: teal;
+  margin-right: 3px; }
