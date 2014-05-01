@@ -38,6 +38,22 @@ h2 {
 // }
 //
 
+text {
+  font: bold 48px monospace;
+}
+
+.enter {
+  fill: green;
+}
+
+.update {
+  fill: #333;
+}
+
+.exit {
+  fill: brown;
+}
+
 .commentForm {
   input {
     display: block;
