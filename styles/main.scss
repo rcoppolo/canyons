@@ -47,11 +47,17 @@ h2 {
 .chart {
   margin-top: 20px;
 }
+
 .chart .bar {
   display: inline-block;
   width: 20px;
   height: 75px;
   background-color: teal;
   margin-right: 3px;
+}
+
+.chart rect {
+  stroke: white;
+  fill: steelblue;
 }
 

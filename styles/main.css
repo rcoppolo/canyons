@@ -364,3 +364,7 @@ h2 {
   height: 75px;
   background-color: teal;
   margin-right: 3px; }
+
+.chart rect {
+  stroke: white;
+  fill: steelblue; }
