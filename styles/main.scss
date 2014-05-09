@@ -7,73 +7,15 @@ body {
   font-size: 16px
 }
 
-h1 {
+h1, h2, h3 {
   font-family: "myriad-pro";
-  font-size: 26px;
 }
 
-h2 {
-  font-family: "calluna";
-  font-size: 26px;
-  font-style: italic;
-  font-weight: normal;
-  em {
-    padding: 0 .15em;
-  }
-  span {
-    font-style: normal;
-    font-weight: 700;
-  }
+h1 {
+  // font-size: 26px;
 }
 
 #hello {
-  @include outer-container;
+  @include span-columns(8);
+  @include shift(2);
 }
-
-// #middle {
-//   background: #ff7700;
-//   color: white;
-//   @include span-columns(6);
-//   @include shift(3);
-// }
-//
-
-text {
-  font: bold 48px monospace;
-}
-
-.enter {
-  fill: green;
-}
-
-.update {
-  fill: #333;
-}
-
-.exit {
-  fill: brown;
-}
-
-.commentForm {
-  input {
-    display: block;
-  }
-}
-
-.chart {
-  margin-top: 20px;
-}
-
-.chart .bar {
-  display: inline-block;
-  width: 20px;
-  height: 75px;
-  background-color: teal;
-  margin-right: 3px;
-}
-
-.chart rect {
-  stroke: white;
-  fill: steelblue;
-}
-

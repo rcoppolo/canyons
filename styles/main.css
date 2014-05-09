@@ -326,57 +326,14 @@ body {
   font-family: "calluna";
   font-size: 16px; }
 
-h1 {
-  font-family: "myriad-pro";
-  font-size: 26px; }
-
-h2 {
-  font-family: "calluna";
-  font-size: 26px;
-  font-style: italic;
-  font-weight: normal; }
-  h2 em {
-    padding: 0 0.15em; }
-  h2 span {
-    font-style: normal;
-    font-weight: 700; }
+h1, h2, h3 {
+  font-family: "myriad-pro"; }
 
 #hello {
-  *zoom: 1;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto; }
-  #hello:before, #hello:after {
-    content: " ";
-    display: table; }
-  #hello:after {
-    clear: both; }
-
-text {
-  font: bold 48px monospace; }
-
-.enter {
-  fill: green; }
-
-.update {
-  fill: #333; }
-
-.exit {
-  fill: brown; }
-
-.commentForm input {
-  display: block; }
-
-.chart {
-  margin-top: 20px; }
-
-.chart .bar {
-  display: inline-block;
-  width: 20px;
-  height: 75px;
-  background-color: teal;
-  margin-right: 3px; }
-
-.chart rect {
-  stroke: white;
-  fill: steelblue; }
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  margin-left: 17.05961%; }
+  #hello:last-child {
+    margin-right: 0; }
