@@ -17,12 +17,7 @@ var Dashboard = React.createClass({
     this.setState({activePane: pane});
   },
 
-  // handleClick: function() {
-  //   this.setState({liked: !this.state.liked});
-  // },
-
   render: function() {
-    // var text = this.state.liked ? "unlike" : "like";
     return (
       <div>
         <PaneList switchPane={this.switchPane} activePane={this.state.activePane} panes={this.state.panes} />
@@ -56,6 +51,6 @@ var PaneList = React.createClass({
 });
 
 React.renderComponent(
-  <Dashboard date={new Date()} />,
+  <Dashboard />,
   document.getElementById("hello")
 );
