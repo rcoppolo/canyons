@@ -18,4 +18,8 @@ h1 {
 #hello {
   @include span-columns(8);
   @include shift(2);
+
+  .active {
+    color: red;
+  }
 }
