@@ -1,12 +1,7 @@
 /** @jsx React.DOM */
 
-var data = [
-  {author: "Pete Hunt", text: "This is one comment"},
-  {author: "Jordan Walke", text: "This is **another** comment"}
-];
-
-var CommentBox = React.createClass({
-  loadCommentsFromServer: function() {
+var Dashboard = React.createClass({
+  loadFuns: function() {
     $.ajax({
       url: this.props.url,
       dataType: "json",
@@ -18,94 +13,89 @@ var CommentBox = React.createClass({
       }.bind(this)
     });
   },
-  handleCommentSubmit: function(comment) {
-    var comments = this.state.data;
-    var newComments = comments.concat([comment]);
-    this.setState({data: newComments});
-    return false;
-    // posting to simplehttpserver doesn't work
-    // also be aware the 2 sec poll thing deletes the ones you submit
-    // $.ajax({
-    //   url: this.props.url,
-    //   dataType: 'json',
-    //   type: 'POST',
-    //   data: comment,
-    //   success: function(data) {
-    //     this.setState({data: data});
-    //   }.bind(this)
-    // });
-  },
   getInitialState: function() {
     return {data: []};
   },
   componentWillMount: function() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    this.loadFuns();
   },
   render: function() {
-    return (
-      <div className="commentBox">
-        <h1>Comments</h1>
-        <CommentList data={this.state.data} />
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-      </div>
-    );
-  }
-});
-
-var CommentForm = React.createClass({
-  handleSubmit: function() {
-    var author = this.refs.author.getDOMNode().value.trim();
-    var text = this.refs.text.getDOMNode().value.trim();
-    if (!text || !author) {
-      return false;
-    }
-    debugger
-    this.props.onCommentSubmit({author: author, text: text});
-    this.refs.author.getDOMNode().value = '';
-    this.refs.text.getDOMNode().value = '';
-    return false;
-  },
-  render: function() {
-    return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Your name..." ref="author" />
-        <input type="text" placeholder="Say something..." ref="text" />
-        <input type="submit" value="Post" />
-      </form>
-    );
-  }
-});
-
-var CommentList = React.createClass({
-  render: function() {
-    var commentNodes = this.props.data.map(function(comment) {
-      return <Comment author={comment.author}>{comment.text}</Comment>
+    var data = this.state.data.map(function(fun) {
+      return {
+        key: fun.key,
+        color: fun.color_b,
+        timings: fun.timings
+      }
     });
     return (
-      <div className="commentList">
-        {commentNodes}
+      <div className="dashboard">
+        <FunList functions={this.state.data} />
+        <Graph data={data} />
       </div>
     );
   }
 });
 
-var converter = new Showdown.converter();
-var Comment = React.createClass({
+var Graph = React.createClass({
+
+  draw: function(data) {
+    var w = 500;
+    var h = 200;
+    var x = d3.scale.linear()
+              .range([0, w])
+              .domain([0, d3.max(data, function(d) { return d.timings.length; }) ]);
+    var y = d3.scale.linear()
+              .range([h, 0])
+              .domain([
+                d3.min(data, function(d1) { return d3.min(d1.timings, function(d2) { return d2; }); }),
+                d3.max(data, function(d1) { return d3.max(d1.timings, function(d2) { return d2; }); })
+              ]);
+    var line = d3.svg.line()
+                 .x(function(d,i) { return x(i); })
+                 .y(function(d) { return y(d); });
+    var svg = d3.select(this.getDOMNode())
+                .attr("height", h)
+                .attr("width", w);
+    var fun = svg.selectAll(".fun")
+                 .data(data)
+               .enter().append("g")
+                 .attr("class", "fun");
+    fun.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) { return line(d.timings); })
+      .style("stroke", function(d) { return d.color; });
+  },
+
+  componentDidMount: function() {
+    this.draw(this.props.data);
+  },
+
+  shouldComponentUpdate: function(props) {
+    this.draw(props.data);
+    return false;
+  },
+
   render: function() {
-    var rawMarkup = converter.makeHtml(this.props.children.toString());
+    return <svg id="graph"></svg>;
+  }
+});
+
+var FunList = React.createClass({
+  render: function() {
+    var functions = this.props.functions.map(function(fun) {
+      return (
+        <h3>{fun.name}</h3>
+      );
+    });
     return (
-      <div className="comment">
-        <h2 className="commentAuthor">
-          {this.props.author}
-        </h2>
-        <span dangerouslySetInnerHTML={{__html: rawMarkup}}/>
-      </div>
+      <ul className="function-list">
+        { functions }
+      </ul>
     );
   }
 });
 
 React.renderComponent(
-  <CommentBox url="/javascripts/comments.json" pollInterval={2000} />,
+  <Dashboard url="/javascripts/funs.json" />,
   document.getElementById('hello')
 );

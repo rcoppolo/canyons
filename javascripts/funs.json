@@ -1,0 +1,41 @@
+[
+  {
+    "timings": [201195, 201335, 201324, 201324, 201157],
+    "arguments": [500],
+    "should_we": "include the average? or just calculate it",
+    "average_time_in_microseconds": 201267,
+    "color_a": "#000000",
+    "color_b": "#ffa500",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "key": "unique_id1",
+    "name": "Timing.faster_time",
+    "result": ":ok",
+    "source_code": "preformat source on backend?"
+  },
+  {
+    "timings": [501195, 501335, 501324, 501324, 501157],
+    "arguments": [500],
+    "should_we": "include the average? or just calculate it",
+    "average_time_in_microseconds": 501267,
+    "color_a": "#000000",
+    "color_b": "#d2047d",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "key": "unique_id2",
+    "name": "Timing.time",
+    "result": ":ok",
+    "source_code": "preformat source on backend?"
+  },
+  {
+    "timings": [1001195, 1001335, 1001324, 1001324, 1001157],
+    "arguments": [500],
+    "should_we": "include the average? or just calculate it",
+    "average_time_in_microseconds": 1001267,
+    "color_a": "#000000",
+    "color_b": "#32cd32",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "key": "unique_id3",
+    "name": "Timing.not_faster_time",
+    "result": ":ok",
+    "source_code": "preformat source on backend?"
+  }
+]

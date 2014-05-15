@@ -2,6 +2,8 @@
 @import 'neat/neat';
 @import 'normalize';
 
+$big: new-breakpoint(min-width 1024px 12);
+
 body {
   font-family: "calluna";
   font-size: 16px
@@ -15,10 +17,25 @@ h1 {
   // font-size: 26px;
 }
 
-#hello {
-  @include span-columns(8);
-  @include shift(2);
+ul {
+  padding: 0;
+}
 
+.line {
+  fill: none;
+  stroke-width: 3px;
+}
+
+#surround {
+  @include outer-container;
+}
+
+#hello {
+  @include shift(1);
+  @include media($big) {
+    @include shift(2);
+  }
+  padding-top: 20px;
   .active {
     color: red;
   }

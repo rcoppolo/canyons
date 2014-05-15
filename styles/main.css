@@ -329,13 +329,29 @@ body {
 h1, h2, h3 {
   font-family: "myriad-pro"; }
 
+ul {
+  padding: 0; }
+
+.line {
+  fill: none;
+  stroke-width: 3px; }
+
+#surround {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  #surround:before, #surround:after {
+    content: " ";
+    display: table; }
+  #surround:after {
+    clear: both; }
+
 #hello {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 65.88078%;
-  margin-left: 17.05961%; }
-  #hello:last-child {
-    margin-right: 0; }
+  margin-left: 8.5298%;
+  padding-top: 20px; }
+  @media screen and (min-width: 1024px) {
+    #hello {
+      margin-left: 17.05961%; } }
   #hello .active {
     color: red; }
