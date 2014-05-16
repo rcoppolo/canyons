@@ -13,10 +13,17 @@ var Dashboard = React.createClass({
       }.bind(this)
     });
   },
+  updateMessage: function(message) {
+    this.setState({message: message});
+  },
   getInitialState: function() {
-    return {data: []};
+    return {
+      message: "Dare you to update this state via websockets.",
+      data: []
+    };
   },
   componentWillMount: function() {
+    window.updateMessage = this.updateMessage;
     this.loadFuns();
   },
   render: function() {
@@ -29,6 +36,7 @@ var Dashboard = React.createClass({
     });
     return (
       <div className="dashboard">
+        <h1>{this.state.message}</h1>
         <FunList functions={this.state.data} />
         <Graph data={data} />
       </div>
