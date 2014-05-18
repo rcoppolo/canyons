@@ -26,6 +26,8 @@ defmodule Canyons.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:cowboy, git: "https://github.com/extend/cowboy", tag: "0.9.0"}
+    ]
   end
 end
