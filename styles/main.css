@@ -336,6 +336,9 @@ ul {
   fill: none;
   stroke-width: 3px; }
 
+.code {
+  font-family: Consolas, "Liberation Mono", Courier, monospace; }
+
 #surround {
   *zoom: 1;
   max-width: 68em;

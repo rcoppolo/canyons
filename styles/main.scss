@@ -26,6 +26,10 @@ ul {
   stroke-width: 3px;
 }
 
+.code {
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
 #surround {
   @include outer-container;
 }

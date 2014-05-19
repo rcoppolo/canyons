@@ -96,7 +96,7 @@ var FunList = React.createClass({
   render: function() {
     var functions = this.props.functions.map(function(fun) {
       return (
-        <h3>{fun.name}</h3>
+        <h3 className="code">{fun.name}</h3>
       );
     });
     return (
