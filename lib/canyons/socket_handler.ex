@@ -4,7 +4,7 @@ defmodule Canyons.SocketHandler do
     { :upgrade, :protocol, :cowboy_websocket }
   end
   def websocket_init(_transport_name, req, _opts) do
-    :timer.send_interval(3000, { :message, "Are we there yet?" })
+    :gproc.reg({ :p, :l, :ye_olde_connection })
     { :ok, req, :no_state }
   end
   def websocket_info({ :message, message }, req, state) do
