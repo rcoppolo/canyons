@@ -23,7 +23,11 @@ var Dashboard = React.createClass({
     };
   },
   componentWillMount: function() {
-    window.updateMessage = this.updateMessage;
+    var that = this;
+    var connection = new WebSocket('ws://localhost:8001/talk');
+    connection.onmessage = function (e) {
+      that.updateMessage(e.data);
+    };
     this.loadFuns();
   },
   render: function() {
