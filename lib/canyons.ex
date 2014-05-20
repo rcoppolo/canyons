@@ -1,5 +1,12 @@
 defmodule Canyons do
   use Application
+  import Canyons.Profiler
+
+  def run do
+    profile :testing do
+      :timer.sleep(50)
+    end
+  end
 
   # See http://elixir-lang.org/docs/stable/Application.html
   # for more information on OTP Applications
