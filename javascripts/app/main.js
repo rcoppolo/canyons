@@ -1,37 +1,25 @@
 /** @jsx React.DOM */
 
 var Dashboard = React.createClass({
-  loadFuns: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: "json",
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      failure: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-  updateMessage: function(message) {
-    this.setState({message: message});
+  pushResult: function(result) {
+    var new_results = this.state.results;
+    new_results.push(result);
+    this.setState({results: new_results});
   },
   getInitialState: function() {
     return {
-      message: "Dare you to update this state via websockets.",
-      data: []
+      results: []
     };
   },
   componentWillMount: function() {
     var that = this;
     var connection = new WebSocket('ws://localhost:8001/talk');
     connection.onmessage = function (e) {
-      that.updateMessage(e.data);
+      that.pushResult(JSON.parse(e.data));
     };
-    this.loadFuns();
   },
   render: function() {
-    var data = this.state.data.map(function(fun) {
+    var data = this.state.results.map(function(fun) {
       return {
         key: fun.key,
         color: fun.color_b,
@@ -40,8 +28,7 @@ var Dashboard = React.createClass({
     });
     return (
       <div className="dashboard">
-        <h1>{this.state.message}</h1>
-        <FunList functions={this.state.data} />
+        <FunList functions={this.state.results} />
         <Graph data={data} />
       </div>
     );
@@ -108,6 +95,6 @@ var FunList = React.createClass({
 });
 
 React.renderComponent(
-  <Dashboard url="/javascripts/funs.json" />,
+  <Dashboard />,
   document.getElementById('hello')
 );

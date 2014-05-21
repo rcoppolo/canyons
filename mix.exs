@@ -27,6 +27,7 @@ defmodule Canyons.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
+      {:jsx, "~> 2.0.3"},
       {:cowboy, git: "https://github.com/extend/cowboy", tag: "0.9.0"},
       {:gproc, git: "https://github.com/uwiger/gproc", tag: "0.3"}
     ]
