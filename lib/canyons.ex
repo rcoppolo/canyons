@@ -1,11 +1,17 @@
 defmodule Canyons do
   use Application
-  import Canyons.Profiler
+  import IEx.Helpers, only: [r: 1]
 
-  def run do
-    profile :testing do
-      :timer.sleep(50)
-    end
+  @total_iterations 10
+
+  def profile(module, function) do
+    r(module)
+    timings = 1..@total_iterations |> Enum.map(fn(_x) ->
+      {time, _value} = :timer.tc(module, function, [])
+      time
+    end)
+    result = %{key: "#{module}.#{function}", color_b: "tomato", timings: timings}
+    Canyons.Message.push(:jsx.encode(result))
   end
 
   # See http://elixir-lang.org/docs/stable/Application.html
