@@ -1,4 +1,4 @@
-defmodule Canyons.Message do
+defmodule Trex.Message do
 
   def push(message) do
     :gproc.send({:p, :l, :ye_olde_connection}, {:message, message})

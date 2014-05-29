@@ -1,8 +1,8 @@
-defmodule Canyons.Mixfile do
+defmodule Trex.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :canyons,
+    [app: :trex,
      version: "0.0.1",
      elixir: "~> 0.13.3-dev",
      deps: deps]
@@ -13,7 +13,7 @@ defmodule Canyons.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [applications: [:gproc, :cowboy],
-     mod: {Canyons, []}]
+     mod: {Trex, []}]
   end
 
   # Dependencies can be hex.pm packages:

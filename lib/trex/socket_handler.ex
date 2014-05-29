@@ -1,4 +1,4 @@
-defmodule Canyons.SocketHandler do
+defmodule Trex.SocketHandler do
   @behaviour :cowboy_websocket_handler
   def init({:tcp, :http}, _req, _opts) do
     { :upgrade, :protocol, :cowboy_websocket }

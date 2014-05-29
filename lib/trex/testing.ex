@@ -1,4 +1,4 @@
-defmodule Canyons.Testing do
+defmodule Trex.Testing do
 
   def run do
     :timer.sleep(10)

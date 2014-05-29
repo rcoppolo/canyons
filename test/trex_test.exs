@@ -1,4 +1,4 @@
-defmodule CanyonsTest do
+defmodule TrexTest do
   use ExUnit.Case
 
   test "the truth" do

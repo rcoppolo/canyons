@@ -1,4 +1,4 @@
-defmodule Canyons do
+defmodule Trex do
   use Application
   import IEx.Helpers, only: [r: 1]
 
@@ -11,7 +11,7 @@ defmodule Canyons do
       time
     end)
     result = %{key: "#{module}.#{function}", color_b: "tomato", timings: timings}
-    Canyons.Message.push(:jsx.encode(result))
+    Trex.Message.push(:jsx.encode(result))
   end
 
   # See http://elixir-lang.org/docs/stable/Application.html
@@ -21,16 +21,16 @@ defmodule Canyons do
 
     # children = [
     #   # Define workers and child supervisors to be supervised
-    #   worker(Canyons.Message, [])
+    #   worker(Trex.Message, [])
     # ]
 
     # # See http://elixir-lang.org/docs/stable/Supervisor.html
     # # for other strategies and supported options
-    # opts = [strategy: :one_for_one, name: Canyons.Supervisor]
+    # opts = [strategy: :one_for_one, name: Trex.Supervisor]
     # Supervisor.start_link(children, opts)
 
     dispatch = :cowboy_router.compile([{:_, [
-      {"/talk", Canyons.SocketHandler, []}
+      {"/talk", Trex.SocketHandler, []}
     ]}])
 
     :cowboy.start_http(:http, 100, [port: 8001], [env: [dispatch: dispatch]])
