@@ -50,6 +50,7 @@ var Graph = React.createClass({
                 d3.max(data, function(d1) { return d3.max(d1.timings, function(d2) { return d2; }); })
               ]);
     var line = d3.svg.line()
+                 .interpolate("basis")
                  .x(function(d,i) { return x(i); })
                  .y(function(d) { return y(d); });
     var svg = d3.select(this.getDOMNode())
